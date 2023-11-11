@@ -1,0 +1,45 @@
+import javax.swing.JOptionPane;
+
+public class Hol {
+    public static void main(String[] args) {
+
+        String[] user = new String[100];
+        String[] pass = new String[100];
+        int i = 0;
+
+        // Sign up part
+        while (i < 100) {
+            user[i] = JOptionPane.showInputDialog("Enter username");
+            System.out.println(user[i]);
+
+            pass[i] = JOptionPane.showInputDialog("Enter your password");
+            System.out.println(pass[i]);
+
+            i++;
+            // if user wanna sign up again
+            int response = JOptionPane.showConfirmDialog(null, "Do you want to continue signing up?", "Continue?",
+                    JOptionPane.YES_NO_OPTION);
+            if (response != JOptionPane.YES_OPTION) {
+                break;
+            }
+        }
+
+        // okavela user signup ki no ante...it comes to login
+        String userinp = JOptionPane.showInputDialog("Enter your username");
+        String passinp = JOptionPane.showInputDialog("Enter your password");
+
+        boolean g = false;
+
+        for (int j = 0; j < i; j++) {
+            if (userinp.equals(user[j]) && passinp.equals(pass[j])) {
+                g = true;
+                JOptionPane.showMessageDialog(null, "Successfully logged in!!");
+                break;
+            }
+        }
+
+        if (!g) {
+            JOptionPane.showMessageDialog(null, "The username or password is incorrect");
+        }
+    }
+}
